@@ -1,4 +1,8 @@
 django
+# API
 djangorestframework
 markdown
 django-filter
+# Generate model image
+django-extensions
+pygraphviz

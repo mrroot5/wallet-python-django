@@ -1,0 +1,29 @@
+# EditorConfig docs and installation: http://editorconfig.org/
+
+# top-most EditorConfig file
+root = true
+
+# For all files
+[*]
+# tab | space
+indent_style = space
+indent_size = 4
+# lf (Unix) | crlf (DOS) | cr (Mac)
+end_of_line = lf
+# latin1 | utf-8 | utf-16be | utf-16le
+charset = utf-8
+# Denotes whether whitespace is allowed at the end of lines
+trim_trailing_whitespace = true
+# Denotes whether file should end with a newline
+insert_final_newline = true
+
+# MORE EXAMPLES
+# HTML config
+[*.html]
+indent_size = 2
+# JSON config
+[*.json]
+indent_size = 2
+# Python config
+[*.py]
+max_line_length = 100

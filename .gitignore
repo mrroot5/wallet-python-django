@@ -83,3 +83,6 @@ virtualenv
 # IDE
 .idea
 .vscode
+
+# Other
+/graph-models.jpeg
