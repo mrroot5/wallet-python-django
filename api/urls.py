@@ -1,11 +1,16 @@
-from django.urls import path, include
+from django.urls import include
+from django.urls import path
 from rest_framework import routers
-from .views import get_current_user_username
-from .views import BussinesAccountViewSet, BussinesWalletViewSet
-from .views import ClientAccountViewSet, ClientWalletViewSet
-from .views import ClientWalletTransactionSet, BussinesWalletTransactionSet
-from .views import get_current_client_id
-from .views import get_current_user_id
+
+from .views import BussinesAccountViewSet
+from .views import BussinesWalletTransactionSet
+from .views import BussinesWalletViewSet
+from .views import ClientAccountViewSet
+from .views import ClientWalletTransactionSet
+from .views import ClientWalletViewSet
+from .views import GetCurrentClientId
+from .views import GetCurrentUserId
+from .views import GetCurrentUserUsername
 from .views import UserViewSet
 
 router = routers.DefaultRouter()
@@ -19,7 +24,7 @@ router.register(r'bussines_wallet_transaction', BussinesWalletTransactionSet, ba
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('get_username/', get_current_user_username, name="get_username"),
-    path('get_user_id/', get_current_user_id, name="get_user_id"),
-    path('get_client_id/', get_current_client_id, name="get_client_id"),
+    path('get_username/', GetCurrentUserUsername.as_view(), name="get_username"),
+    path('get_user_id/', GetCurrentUserId.as_view(), name="get_user_id"),
+    path('get_client_id/', GetCurrentClientId.as_view(), name="get_client_id"),
 ]

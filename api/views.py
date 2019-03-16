@@ -1,23 +1,27 @@
 from django.contrib.auth.models import User
-from rest_framework.decorators import authentication_classes
-from rest_framework.decorators import permission_classes
-from rest_framework.decorators import renderer_classes
-from rest_framework.renderers import JSONRenderer
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-from rest_framework import authentication
-from rest_framework import permissions
-from rest_framework import viewsets
-from rest_framework import mixins
-from rest_framework import status
-from .serializers import BussinesAccountSerializer, BussinesWalletSerializer
-from .serializers import ClientAccountSerializer, ClientWalletSerializer
-from .serializers import BussinesWalletTransactionSerializer
-from .serializers import ClientWalletTransactionSerializer
-from .models import BussinesAccount, BussinesWallet, BussinesWalletTransaction
-from .models import ClientAccount, ClientWallet, ClientWalletTransaction
-from .serializers import UserSerializer
 from django.db import transaction
+from rest_framework import authentication
+from rest_framework import mixins
+from rest_framework import permissions
+from rest_framework import status
+from rest_framework import viewsets
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
+from rest_framework.views import APIView
+
+from .models import BussinesAccount
+from .models import BussinesWallet
+from .models import BussinesWalletTransaction
+from .models import ClientAccount
+from .models import ClientWallet
+from .models import ClientWalletTransaction
+from .serializers import BussinesAccountSerializer
+from .serializers import BussinesWalletSerializer
+from .serializers import BussinesWalletTransactionSerializer
+from .serializers import ClientAccountSerializer
+from .serializers import ClientWalletSerializer
+from .serializers import ClientWalletTransactionSerializer
+from .serializers import UserSerializer
 
 
 class UserViewSet(mixins.CreateModelMixin,
@@ -70,6 +74,7 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
                                  mixins.RetrieveModelMixin,
                                  mixins.ListModelMixin,
                                  viewsets.GenericViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ClientWalletTransactionSerializer
 
     def get_queryset(self):
@@ -97,6 +102,7 @@ class BussinesWalletTransactionSet(mixins.CreateModelMixin,
                                  mixins.RetrieveModelMixin,
                                  mixins.ListModelMixin,
                                  viewsets.GenericViewSet):
+    permission_classes = (permissions.IsAuthenticated,)
     serializer_class = BussinesWalletTransactionSerializer
 
     def get_queryset(self):
@@ -129,29 +135,32 @@ class BussinesWalletTransactionSet(mixins.CreateModelMixin,
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-@api_view(['GET'])
-@renderer_classes([JSONRenderer])
-@authentication_classes((authentication.SessionAuthentication, authentication.BasicAuthentication))
-@permission_classes((permissions.IsAuthenticated,))
-def get_current_user_username(request):
-    json_response = {"username": request.user.username}
-    return Response(json_response)
+class GetCurrentUserUsername(APIView):
+    authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+    renderer_classes = (JSONRenderer,)
+
+    def get(self, request):
+        json_response = {"username": request.user.username}
+        return Response(json_response)
 
 
-@api_view(['GET'])
-@renderer_classes([JSONRenderer])
-@authentication_classes((authentication.SessionAuthentication, authentication.BasicAuthentication))
-@permission_classes((permissions.IsAuthenticated,))
-def get_current_user_id(request):
-    json_response = {"id": request.user.pk}
-    return Response(json_response)
+class GetCurrentUserId(APIView):
+    authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+    renderer_classes = (JSONRenderer,)
+
+    def get(self, request):
+        json_response = {"id": request.user.pk}
+        return Response(json_response)
 
 
-@api_view(['GET'])
-@renderer_classes([JSONRenderer])
-@authentication_classes((authentication.SessionAuthentication, authentication.BasicAuthentication))
-@permission_classes((permissions.IsAuthenticated,))
-def get_current_client_id(request):
-    client = ClientAccount.objects.get(user_fk=request.user.pk)
-    json_response = {"id": client.id}
-    return Response(json_response)
+class GetCurrentClientId(APIView):
+    authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
+    permission_classes = (permissions.IsAuthenticated,)
+    renderer_classes = (JSONRenderer,)
+
+    def get(self, request):
+        client = ClientAccount.objects.get(user_account=request.user.pk)
+        json_response = {"id": client.id}
+        return Response(json_response)
