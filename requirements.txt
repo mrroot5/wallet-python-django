@@ -2,7 +2,11 @@ django
 # API
 djangorestframework
 markdown
+## Restful-Django lib client
+coreapi
 django-filter
 # Generate model image
 django-extensions
 pygraphviz
+# Others
+requests

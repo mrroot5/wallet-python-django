@@ -25,13 +25,11 @@ from .serializers import UserSerializer
 
 
 class UserViewSet(mixins.CreateModelMixin,
-                  mixins.UpdateModelMixin,
                   viewsets.GenericViewSet):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        user = self.request.user.pk
-        return User.objects.filter(user_account=user.pk)
+        return User.objects.get(id=self.request.user.pk)
 
 
 class BussinesAccountViewSet(viewsets.ModelViewSet):

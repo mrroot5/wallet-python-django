@@ -1,0 +1,4 @@
+TEST_URL = "http://localhost:8000"
+DEFAULT_CLIENT_USERNAME = "testuser"
+DEFAULT_CLIENT_PASSWORD = "F$DV.|UCLs@RT9~)=h27j4f6{3bt5yxW8wukpnB+*ZcPHidA#rXN,aqze[(E]YGv"
+DEFAULT_CLIENT_EMAIL = DEFAULT_CLIENT_USERNAME + "@domain.com.es"
