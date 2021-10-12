@@ -6,7 +6,7 @@ rm -rf api/__pycache__
 rm -rf _autofixture
 echo -e "Done\n"
 echo "Create migrations and database. . ."
-. venv/bin/activate
+. env/bin/activate
 ./manage.py makemigrations api
 ./manage.py migrate
 echo -e "Done\n"

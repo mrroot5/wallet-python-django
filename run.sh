@@ -1,6 +1,6 @@
 #!/bin/sh
 # Activate en
-. venv/bin/activate
+. env/bin/activate
 # Migrations
 python3 manage.py makemigrations api
 python3 manage.py migrate
