@@ -1,5 +1,9 @@
+import logging
 from django.contrib.auth.models import User
 from django.db import transaction
+from django.http import Http404
+from django.shortcuts import get_object_or_404
+
 from rest_framework import authentication
 from rest_framework import mixins
 from rest_framework import permissions
@@ -22,6 +26,8 @@ from .serializers import ClientAccountSerializer
 from .serializers import ClientWalletSerializer
 from .serializers import ClientWalletTransactionSerializer
 from .serializers import UserSerializer
+
+logger = logging.getLogger(__name__)
 
 
 class UserViewSet(mixins.CreateModelMixin,
@@ -76,7 +82,7 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
     serializer_class = ClientWalletTransactionSerializer
 
     def get_queryset(self):
-        client = ClientAccount.objects.get(user_account=self.request.user.pk)
+        client = get_object_or_404(ClientAccount, user_account=self.request.user.pk)
         return ClientWalletTransaction.objects.filter(client_account=client.id)
 
     def create(self, request, *args, **kwargs):
@@ -104,8 +110,15 @@ class BussinesWalletTransactionSet(mixins.CreateModelMixin,
     serializer_class = BussinesWalletTransactionSerializer
 
     def get_queryset(self):
-        wallet = BussinesWallet.objects.get(
-            bussines_account=BussinesAccount.objects.get(user_account=self.request.user.pk).pk)
+        try:
+            wallet = BussinesWallet.objects.get(
+                bussines_account=BussinesAccount.objects.get(user_account=self.request.user.pk).pk)
+        except BussinesWallet.DoesNotExist as err:
+            logger.error('BussinesWallet not found')
+            raise Http404('BussinesWallet not found')
+        except BussinesAccount.DoesNotExist as err:
+            logger.error('BussinesAccount not found')
+            raise Http404('BussinesAccount not found')
         return BussinesWalletTransaction.objects.filter(bussines_wallet_account=wallet.id)
 
     def create(self, request, *args, **kwargs):
