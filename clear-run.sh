@@ -14,6 +14,6 @@ echo -e "Done\n"
 #./manage.py createsuperuser --username admin --email admin@dev.com
 # python3 manage.py shell -c "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@example.com', 'P@ssw0rd!')"
 #echo -e "Done\n"
-echo "Create plot graph model. . ."
-./manage.py graph_models api -g -o graph-models.jpeg
-echo -e "Done\n"
+#echo "Create plot graph model. . ."
+#./manage.py graph_models api -g -o graph-models.jpeg
+#echo -e "Done\n"
