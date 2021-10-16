@@ -1,0 +1,668 @@
+[
+{
+  "model": "auth.permission",
+  "pk": 1,
+  "fields": {
+    "name": "Can add log entry",
+    "content_type": 1,
+    "codename": "add_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 2,
+  "fields": {
+    "name": "Can change log entry",
+    "content_type": 1,
+    "codename": "change_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 3,
+  "fields": {
+    "name": "Can delete log entry",
+    "content_type": 1,
+    "codename": "delete_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 4,
+  "fields": {
+    "name": "Can view log entry",
+    "content_type": 1,
+    "codename": "view_logentry"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 5,
+  "fields": {
+    "name": "Can add permission",
+    "content_type": 2,
+    "codename": "add_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 6,
+  "fields": {
+    "name": "Can change permission",
+    "content_type": 2,
+    "codename": "change_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 7,
+  "fields": {
+    "name": "Can delete permission",
+    "content_type": 2,
+    "codename": "delete_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 8,
+  "fields": {
+    "name": "Can view permission",
+    "content_type": 2,
+    "codename": "view_permission"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 9,
+  "fields": {
+    "name": "Can add group",
+    "content_type": 3,
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 10,
+  "fields": {
+    "name": "Can change group",
+    "content_type": 3,
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 11,
+  "fields": {
+    "name": "Can delete group",
+    "content_type": 3,
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 12,
+  "fields": {
+    "name": "Can view group",
+    "content_type": 3,
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 13,
+  "fields": {
+    "name": "Can add user",
+    "content_type": 4,
+    "codename": "add_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 14,
+  "fields": {
+    "name": "Can change user",
+    "content_type": 4,
+    "codename": "change_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 15,
+  "fields": {
+    "name": "Can delete user",
+    "content_type": 4,
+    "codename": "delete_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 16,
+  "fields": {
+    "name": "Can view user",
+    "content_type": 4,
+    "codename": "view_user"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 17,
+  "fields": {
+    "name": "Can add content type",
+    "content_type": 5,
+    "codename": "add_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 18,
+  "fields": {
+    "name": "Can change content type",
+    "content_type": 5,
+    "codename": "change_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 19,
+  "fields": {
+    "name": "Can delete content type",
+    "content_type": 5,
+    "codename": "delete_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 20,
+  "fields": {
+    "name": "Can view content type",
+    "content_type": 5,
+    "codename": "view_contenttype"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 21,
+  "fields": {
+    "name": "Can add session",
+    "content_type": 6,
+    "codename": "add_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 22,
+  "fields": {
+    "name": "Can change session",
+    "content_type": 6,
+    "codename": "change_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 23,
+  "fields": {
+    "name": "Can delete session",
+    "content_type": 6,
+    "codename": "delete_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 24,
+  "fields": {
+    "name": "Can view session",
+    "content_type": 6,
+    "codename": "view_session"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 25,
+  "fields": {
+    "name": "Can add bussines account",
+    "content_type": 7,
+    "codename": "add_bussinesaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 26,
+  "fields": {
+    "name": "Can change bussines account",
+    "content_type": 7,
+    "codename": "change_bussinesaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 27,
+  "fields": {
+    "name": "Can delete bussines account",
+    "content_type": 7,
+    "codename": "delete_bussinesaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 28,
+  "fields": {
+    "name": "Can view bussines account",
+    "content_type": 7,
+    "codename": "view_bussinesaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 29,
+  "fields": {
+    "name": "Can add bussines wallet",
+    "content_type": 8,
+    "codename": "add_bussineswallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 30,
+  "fields": {
+    "name": "Can change bussines wallet",
+    "content_type": 8,
+    "codename": "change_bussineswallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 31,
+  "fields": {
+    "name": "Can delete bussines wallet",
+    "content_type": 8,
+    "codename": "delete_bussineswallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 32,
+  "fields": {
+    "name": "Can view bussines wallet",
+    "content_type": 8,
+    "codename": "view_bussineswallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 33,
+  "fields": {
+    "name": "Can add client account",
+    "content_type": 9,
+    "codename": "add_clientaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 34,
+  "fields": {
+    "name": "Can change client account",
+    "content_type": 9,
+    "codename": "change_clientaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 35,
+  "fields": {
+    "name": "Can delete client account",
+    "content_type": 9,
+    "codename": "delete_clientaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 36,
+  "fields": {
+    "name": "Can view client account",
+    "content_type": 9,
+    "codename": "view_clientaccount"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 37,
+  "fields": {
+    "name": "Can add client wallet",
+    "content_type": 10,
+    "codename": "add_clientwallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 38,
+  "fields": {
+    "name": "Can change client wallet",
+    "content_type": 10,
+    "codename": "change_clientwallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 39,
+  "fields": {
+    "name": "Can delete client wallet",
+    "content_type": 10,
+    "codename": "delete_clientwallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 40,
+  "fields": {
+    "name": "Can view client wallet",
+    "content_type": 10,
+    "codename": "view_clientwallet"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 41,
+  "fields": {
+    "name": "Can add client wallet transaction",
+    "content_type": 11,
+    "codename": "add_clientwallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 42,
+  "fields": {
+    "name": "Can change client wallet transaction",
+    "content_type": 11,
+    "codename": "change_clientwallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 43,
+  "fields": {
+    "name": "Can delete client wallet transaction",
+    "content_type": 11,
+    "codename": "delete_clientwallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 44,
+  "fields": {
+    "name": "Can view client wallet transaction",
+    "content_type": 11,
+    "codename": "view_clientwallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 45,
+  "fields": {
+    "name": "Can add bussines wallet transaction",
+    "content_type": 12,
+    "codename": "add_bussineswallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 46,
+  "fields": {
+    "name": "Can change bussines wallet transaction",
+    "content_type": 12,
+    "codename": "change_bussineswallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 47,
+  "fields": {
+    "name": "Can delete bussines wallet transaction",
+    "content_type": 12,
+    "codename": "delete_bussineswallettransaction"
+  }
+},
+{
+  "model": "auth.permission",
+  "pk": 48,
+  "fields": {
+    "name": "Can view bussines wallet transaction",
+    "content_type": 12,
+    "codename": "view_bussineswallettransaction"
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$FfGRlpNq2rilL7yt7fA3D9$BAOyBSQ1QYZkOzjg35cpvY+Apn9C3Y+s385yRRSR9Tc=",
+    "last_login": "2021-10-15T19:23:37.989Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2021-10-15T19:23:33.371Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$OsVRPzOABsLVRzf5rYNrMm$zVA+BwTXHkJCLilg/KVJ7lzzUWzN+NMZFQ9FX4P+pg8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "mrroot5",
+    "first_name": "mrroot5",
+    "last_name": "mrroot5",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-15T19:24:03.018Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "auth",
+    "model": "user"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "api",
+    "model": "bussinesaccount"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "api",
+    "model": "bussineswallet"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "api",
+    "model": "clientaccount"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "api",
+    "model": "clientwallet"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "api",
+    "model": "clientwallettransaction"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "api",
+    "model": "bussineswallettransaction"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "0up2pai4tzfgcq7ijfa3da82iljwqu8j",
+  "fields": {
+    "session_data": ".eJxVjM0OwiAQhN-FsyH81C549O4zkIVdpGogKe3J-O62SQ96mmS-b-YtAq5LCWvnOUwkLkKL028XMT257oAeWO9NplaXeYpyV-RBu7w14tf1cP8OCvayrdlpC8Ypj4aUiho8RMcKcxzQWsiUktkSvT0PEYA9aNJsFWei0eAoPl_SnDfN:1mbSnp:EHfSN_OmNzAuO2F1EiMO4x-aumFtfDuYt7s_p3xJmtM",
+    "expire_date": "2021-10-29T19:23:37.991Z"
+  }
+},
+{
+  "model": "api.bussinesaccount",
+  "pk": "105deace-d305-46c3-91d8-df12992ebc1f",
+  "fields": {
+    "city": "Aranjuez Business",
+    "postal_code": "28000",
+    "state": "Madrid Business",
+    "public_username": "nickname Business",
+    "date_created": "2021-10-15T19:24:51.568Z",
+    "last_update": "2021-10-15T19:24:51.568Z",
+    "user_account": 1,
+    "company_name": "My Bussines Inc."
+  }
+},
+{
+  "model": "api.clientaccount",
+  "pk": "5a11b13c-208d-42b7-82f5-f76705d73bc1",
+  "fields": {
+    "city": "Aranjuez",
+    "postal_code": "28000",
+    "state": "Madrid",
+    "public_username": "nickname",
+    "date_created": "2021-10-15T19:24:27.587Z",
+    "last_update": "2021-10-15T19:24:27.587Z",
+    "user_account": 1,
+    "name": "John",
+    "surname": "Doe"
+  }
+},
+{
+  "model": "api.bussineswallet",
+  "pk": "fde6ceb5-3b94-4b24-9667-396dcd5187bb",
+  "fields": {
+    "balance": 0.0,
+    "date_created": "2021-10-15T19:25:44.050Z",
+    "last_update": "2021-10-15T19:25:44.050Z",
+    "bussines_account": "105deace-d305-46c3-91d8-df12992ebc1f"
+  }
+},
+{
+  "model": "api.clientwallet",
+  "pk": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
+  "fields": {
+    "balance": 133.23000000000002,
+    "date_created": "2021-10-15T19:25:34.482Z",
+    "last_update": "2021-10-15T19:27:05.506Z",
+    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "23862f48-e0bc-4a50-a6e3-89d46ef71644",
+  "fields": {
+    "description": "Transaction description",
+    "ammount": 10.0,
+    "done": false,
+    "transaction_type": 1,
+    "error_msg": "asfadfsdfsdf",
+    "extra_info": "Extra info about this transaction",
+    "date_created": "2021-10-15T19:26:33.425Z",
+    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
+    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "9a8baede-bdd5-4bdd-ac6d-3eb2d05f02ca",
+  "fields": {
+    "description": "Transaction description 2",
+    "ammount": 123.23,
+    "done": false,
+    "transaction_type": 0,
+    "error_msg": "asfadfsdfsdf",
+    "extra_info": "",
+    "date_created": "2021-10-15T19:27:05.509Z",
+    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
+    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
+  }
+},
+{
+  "model": "api.bussineswallettransaction",
+  "pk": "59b49fdd-fe18-481f-aaca-e6a0e3d2af96",
+  "fields": {
+    "description": "",
+    "ammount": 2356.0,
+    "done": false,
+    "transaction_type": 0,
+    "error_msg": "Transaction error: insufficient funds",
+    "extra_info": "",
+    "date_created": "2021-10-15T19:27:54.731Z",
+    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
+    "bussines_wallet_account": "fde6ceb5-3b94-4b24-9667-396dcd5187bb"
+  }
+}
+]
