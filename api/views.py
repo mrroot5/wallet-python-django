@@ -13,10 +13,9 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import BussinesAccount
-from .models import BussinesWallet
-from .models import BussinesWalletTransaction
-from .models import ClientAccount
+from commons.permissions import AnonCreateAndUpdateOwnerOnly, ListStaffOnly, IsStaff
+from commons.utils import ClassUtils
+from .models import ClientAccount, WalletTransaction
 from .models import ClientWallet
 from .models import ClientWalletTransaction
 from .serializers import ClientAccountSerializer
@@ -28,12 +27,17 @@ logger = logging.getLogger(__name__)
 
 
 class UserViewSet(mixins.CreateModelMixin,
+                  mixins.UpdateModelMixin,
+                  mixins.RetrieveModelMixin,
+                  mixins.ListModelMixin,
                   viewsets.GenericViewSet):
+    permission_classes = (AnonCreateAndUpdateOwnerOnly, ListStaffOnly,)
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        return User.objects.get(id=self.request.user.pk)
-
+        if self.request.user.is_staff:
+            return User.objects.all()
+        return User.objects.filter(id=self.request.user.pk)
 
 class BussinesAccountViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
@@ -49,8 +53,13 @@ class ClientAccountViewSet(viewsets.ModelViewSet):
     serializer_class = ClientAccountSerializer
 
     def get_queryset(self):
-        user = self.request.user.pk
-        return ClientAccount.objects.filter(user_account=user)
+        if self.request.user.is_staff:
+            return ClientAccount.objects.all()
+        return ClientAccount.objects.filter(user_account_id=self.request.user.pk)
+
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
 
 
 class ClientWalletViewSet(viewsets.ModelViewSet):
@@ -58,9 +67,10 @@ class ClientWalletViewSet(viewsets.ModelViewSet):
     serializer_class = ClientWalletSerializer
 
     def get_queryset(self):
-        client = ClientAccount.objects.get(user_account=self.request.user.pk)
-        return ClientWallet.objects.filter(client_account=client)
-
+        # client = ClientAccount.objects.get(id=self.request.user.pk)
+        if self.request.user.is_staff:
+            return ClientWallet.objects.all()
+        return ClientWallet.objects.filter(client_account__id=self.request.user.pk)
 
 class BussinesWalletViewSet(viewsets.ModelViewSet):
     permission_classes = (permissions.IsAuthenticated,)
@@ -79,8 +89,12 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
     serializer_class = ClientWalletTransactionSerializer
 
     def get_queryset(self):
-        client = get_object_or_404(ClientAccount, user_account=self.request.user.pk)
-        return ClientWalletTransaction.objects.filter(client_account=client.id)
+        if self.request.user.is_staff:
+            ClientWalletTransaction.objects.all()
+        try:
+            return ClientWalletTransaction.objects.filter(client_account__id=self.request.user.pk)
+        except (ClientAccount.DoesNotExist, ClientWalletTransaction.DoesNotExist):
+            raise Http404
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -92,7 +106,11 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
 
         with transaction.atomic():
             client_wallet = ClientWallet.objects.select_for_update().get(id=wallet_token)
-            client_wallet.balance += money_amount
+            if serializer.validated_data.get('type') not in [
+                WalletTransaction.Type.TESTING,
+                WalletTransaction.Type.ERROR
+            ]:
+                client_wallet.balance += money_amount
             client_wallet.save()
             self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
@@ -125,6 +143,6 @@ class GetCurrentClientId(APIView):
     renderer_classes = (JSONRenderer,)
 
     def get(self, request):
-        client = ClientAccount.objects.get(user_account=request.user.pk)
+        client = get_object_or_404(ClientAccount, user_account=request.user.pk)
         json_response = {"id": client.id}
         return Response(json_response)
