@@ -19,9 +19,6 @@ from .models import BussinesWalletTransaction
 from .models import ClientAccount
 from .models import ClientWallet
 from .models import ClientWalletTransaction
-from .serializers import BussinesAccountSerializer
-from .serializers import BussinesWalletSerializer
-from .serializers import BussinesWalletTransactionSerializer
 from .serializers import ClientAccountSerializer
 from .serializers import ClientWalletSerializer
 from .serializers import ClientWalletTransactionSerializer
@@ -97,50 +94,6 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
             client_wallet = ClientWallet.objects.select_for_update().get(id=wallet_token)
             client_wallet.balance += money_amount
             client_wallet.save()
-            self.perform_create(serializer)
-        headers = self.get_success_headers(serializer.data)
-        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
-class BussinesWalletTransactionSet(mixins.CreateModelMixin,
-                                 mixins.RetrieveModelMixin,
-                                 mixins.ListModelMixin,
-                                 viewsets.GenericViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
-    serializer_class = BussinesWalletTransactionSerializer
-
-    def get_queryset(self):
-        try:
-            wallet = BussinesWallet.objects.get(
-                bussines_account=BussinesAccount.objects.get(user_account=self.request.user.pk).pk)
-        except BussinesWallet.DoesNotExist as err:
-            logger.error('BussinesWallet not found')
-            raise Http404('BussinesWallet not found')
-        except BussinesAccount.DoesNotExist as err:
-            logger.error('BussinesAccount not found')
-            raise Http404('BussinesAccount not found')
-        return BussinesWalletTransaction.objects.filter(bussines_wallet_account=wallet.id)
-
-    def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-
-        bussines_token = request.data.get("bussines_wallet_account")
-        client_token = request.data.get("client_wallet_account")
-        money_amount = round(float(serializer.validated_data.get("ammount")), 2)
-        serializer.validated_data["ammount"] = money_amount
-
-        with transaction.atomic():
-            client_wallet = ClientWallet.objects.select_for_update().get(id=client_token)
-            if client_wallet.balance < money_amount:
-                serializer.validated_data["done"] = False
-                serializer.validated_data["error_msg"] = "Transaction error: insufficient funds"
-            else:
-                client_wallet.balance -= money_amount
-                client_wallet.save()
-                wallet = BussinesWallet.objects.select_for_update().get(id=bussines_token)
-                wallet.balance += money_amount
-                wallet.save()
             self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)

@@ -21,10 +21,6 @@ class Account(models.Model):
         abstract = True
 
 
-class BussinesAccount(Account):
-    company_name = models.CharField(max_length=150, unique=True, help_text="Ex. My Bussines Inc.")
-
-
 class ClientAccount(Account):
     name = models.CharField(max_length=50, unique=False, help_text="Ex. John")
     surname = models.CharField(max_length=100, unique=False, help_text="Ex. Doe")
@@ -37,18 +33,8 @@ class Wallet(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, unique=False)
     last_update = models.DateTimeField(auto_now=True, unique=False)
 
-    def __str__(self):
-        return "%s" % self.user_account.username
-
     class Meta:
         abstract = True
-
-
-class BussinesWallet(Wallet):
-    bussines_account = models.OneToOneField(BussinesAccount, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "%s" % (self.bussines_account.__str__())
 
 
 class ClientWallet(Wallet):
@@ -59,17 +45,17 @@ class ClientWallet(Wallet):
 
 
 class WalletTransaction(models.Model):
+    class Type(models.TextChoices):
+        ERROR = 0
+        TESTING = 1
+        DEPOSIT = 2
+        WITHDRAW = 3
     id = models.UUIDField(primary_key=True, default=uuid4, editable=False)
     description = models.CharField(max_length=250, null=True, blank=True, unique=False,
                                    help_text="Transaction description")
-    ammount = models.FloatField()
+    amount = models.FloatField()
     done = models.BooleanField(default=True, help_text="It check if the transaction was completed")
-    # Transaction choices
-    TRANSACTION_TYPE = (
-        (0, "error"),
-        (1, "testing"),
-    )
-    transaction_type = models.IntegerField(choices=TRANSACTION_TYPE, default=2, help_text="Add or substract money")
+    transaction_type = models.IntegerField(choices=Type.choices, default=Type.TESTING, help_text="Add or substract money")
     error_msg = models.CharField(max_length=250, null=True, blank=True, unique=False,
                                  help_text="Ex. Transaction error: negative balance ")
     extra_info = models.TextField(null=True, blank=True, unique=False, help_text="Extra info about this transaction")
@@ -84,16 +70,7 @@ class WalletTransaction(models.Model):
 
 
 class ClientWalletTransaction(WalletTransaction):
-    WalletTransaction.TRANSACTION_TYPE += ((2, "deposit"),)
     client_account = models.ForeignKey(ClientAccount, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return "%s" % (self.client_wallet_account.__str__())
-
-
-class BussinesWalletTransaction(WalletTransaction):
-    WalletTransaction.TRANSACTION_TYPE += ((2, "charge"),)
-    bussines_wallet_account = models.ForeignKey(BussinesWallet, on_delete=models.CASCADE)
 
     def __str__(self):
         return "%s" % (self.client_wallet_account.__str__())

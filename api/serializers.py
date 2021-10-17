@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
-from .models import BussinesAccount, BussinesWallet, BussinesWalletTransaction
+from rest_framework.fields import empty
+
 from .models import ClientAccount, ClientWallet, ClientWalletTransaction
 from commons.utils import RequestTools
 
@@ -74,36 +75,8 @@ class ClientWalletSerializer(serializers.ModelSerializer):
         read_only_fields = ("pk",)
 
 
-class BussinesWalletSerializer(serializers.ModelSerializer):
-    def create(self, validated_data):
-        if RequestTools.check_if_request_user_exist(self.context):
-            user = self.context.get("request").user.pk
-            bussines = BussinesAccount.objects.get(user_account=user)
-            validated_data["bussines_account"] = bussines
-        return super(BussinesWalletSerializer, self).create(validated_data)
-
-    def update(self, instance, validated_data):
-        if RequestTools.check_if_request_user_exist(self.context):
-            user = self.context.get("request").user.pk
-            bussines = BussinesAccount.objects.get(user_account=user)
-            validated_data["bussines_account"] = bussines
-        return super(BussinesWalletSerializer, self).update(instance, validated_data)
-
-    class Meta:
-        model = BussinesWallet
-        fields = "__all__"
-        read_only_fields = ("pk",)
-
-
 class ClientWalletTransactionSerializer(serializers.ModelSerializer):
     class Meta:
         model = ClientWalletTransaction
-        fields = "__all__"
-        read_only_fields = ("pk", "date_created",)
-
-
-class BussinesWalletTransactionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = BussinesWalletTransaction
         fields = "__all__"
         read_only_fields = ("pk", "date_created",)
