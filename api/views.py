@@ -1,6 +1,7 @@
 import logging
 from django.contrib.auth.models import User
 from django.db import transaction
+from django.db.models import Count
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
@@ -145,4 +146,20 @@ class GetCurrentClientId(APIView):
     def get(self, request):
         client = get_object_or_404(ClientAccount, user_account=request.user.pk)
         json_response = {"id": client.id}
+        return Response(json_response)
+
+
+class GetNumClientAccounts(APIView):
+    authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
+    permission_classes = (IsStaff,)
+    renderer_classes = (JSONRenderer,)
+
+    def get(self, request):
+        users = User.objects.annotate(num_accounts=Count('clientaccount'))
+        json_response = []
+        allowed_data = ['id', 'username', 'num_accounts']
+        for user in users:
+            json_response.append(
+                ClassUtils.get_class_instance_properties_as_dict(user, allowed_data)
+            )
         return Response(json_response)
