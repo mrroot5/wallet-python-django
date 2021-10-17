@@ -53,12 +53,12 @@ make dev
 Run uvicorn server:
 
 ```shell
-make web
+make uvicorn
 ```
 
 #### Load sample data
 
-Apply `initial_data.json` fixture:
+Apply `initial_data.json` fixture. This action will erase all previous data:
 
 ```shell
 make loaddata
@@ -95,12 +95,12 @@ docker-compose -p django_atomic_transactions -f environment/docker-compose.yml r
 Run uvicorn server:
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web web
+docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web uvicorn
 ```
 
 #### Step 4: Load sample data
 
-Apply `initial_data.json` fixture:
+Apply `initial_data.json` fixture. This action will erase all previous data:
 
 ```shell
 docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web loaddata
