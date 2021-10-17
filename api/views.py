@@ -40,13 +40,9 @@ class UserViewSet(mixins.CreateModelMixin,
             return User.objects.all()
         return User.objects.filter(id=self.request.user.pk)
 
-class BussinesAccountViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
-    serializer_class = BussinesAccountSerializer
-
-    def get_queryset(self):
-        user = self.request.user.pk
-        return BussinesAccount.objects.filter(user_account=user)
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
 
 
 class ClientAccountViewSet(viewsets.ModelViewSet):
@@ -73,13 +69,9 @@ class ClientWalletViewSet(viewsets.ModelViewSet):
             return ClientWallet.objects.all()
         return ClientWallet.objects.filter(client_account__id=self.request.user.pk)
 
-class BussinesWalletViewSet(viewsets.ModelViewSet):
-    permission_classes = (permissions.IsAuthenticated,)
-    serializer_class = BussinesWalletSerializer
-
-    def get_queryset(self):
-        bussines = BussinesAccount.objects.get(user_account=self.request.user.pk)
-        return BussinesWallet.objects.filter(bussines_account=bussines)
+    def update(self, request, *args, **kwargs):
+        kwargs['partial'] = True
+        return super().update(request, *args, **kwargs)
 
 
 class ClientWalletTransactionSet(mixins.CreateModelMixin,
