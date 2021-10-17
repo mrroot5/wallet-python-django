@@ -3,6 +3,7 @@ from django.urls import path
 from rest_framework import routers
 
 from .views import ClientAccountViewSet
+from .views import GetNumClientAccounts
 from .views import ClientWalletTransactionSet
 from .views import ClientWalletViewSet
 from .views import GetCurrentClientId
@@ -21,4 +22,5 @@ urlpatterns = [
     path('get_username/', GetCurrentUserUsername.as_view(), name="get_username"),
     path('get_user_id/', GetCurrentUserId.as_view(), name="get_user_id"),
     path('get_client_id/', GetCurrentClientId.as_view(), name="get_client_id"),
+    path('get_num_accounts/', GetNumClientAccounts.as_view(), name="get_client_id"),
 ]
