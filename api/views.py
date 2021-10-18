@@ -88,25 +88,37 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
         if self.request.user.is_staff:
             ClientWalletTransaction.objects.all()
         try:
-            return ClientWalletTransaction.objects.filter(client_account__id=self.request.user.pk)
+            return ClientWalletTransaction.objects.filter(
+                client_wallet_account__client_account_id=self.request.user.pk
+            )
         except (ClientAccount.DoesNotExist, ClientWalletTransaction.DoesNotExist):
             raise Http404
 
-    def create(self, request, *args, **kwargs):
+    def create(self, request, *args, **kwargs) -> Response:
+        """
+        * Docs
+        ** Transaction atomic:
+        https://docs.djangoproject.com/en/3.2/topics/db/transactions/#controlling-transactions-explicitly
+        :return: A django rest framework response
+        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
         wallet_token = request.data.get("client_wallet_account")
-        money_amount = round(float(serializer.validated_data.get("ammount")), 2)
-        serializer.validated_data["ammount"] = money_amount
-
+        amount = serializer.validated_data.get("amount", 0)
+        if amount > 0:
+            serializer.validated_data["transaction_type"] = ClientWalletTransaction.Type.DEPOSIT.value
+        elif amount < 0:
+            serializer.validated_data["transaction_type"] = ClientWalletTransaction.Type.WITHDRAW.value
+        else:
+            serializer.validated_data["transaction_type"] = ClientWalletTransaction.Type.TESTING.value
         with transaction.atomic():
             client_wallet = ClientWallet.objects.select_for_update().get(id=wallet_token)
-            if serializer.validated_data.get('type') not in [
+            if serializer.validated_data.get('transaction_type') not in [
                 WalletTransaction.Type.TESTING,
                 WalletTransaction.Type.ERROR
             ]:
-                client_wallet.balance += money_amount
+                client_wallet.balance += amount
             client_wallet.save()
             self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)
