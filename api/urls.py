@@ -15,7 +15,11 @@ router = routers.DefaultRouter()
 router.register(r'user', UserViewSet, basename="user_api")
 router.register(r'client', ClientAccountViewSet, basename="client_api")
 router.register(r'client_wallet', ClientWalletViewSet, basename="client_wallet_api")
-router.register(r'client_wallet_transaction', ClientWalletTransactionSet, basename="client_wallet_transaction_api")
+router.register(
+    r'client_wallet_transaction',
+    ClientWalletTransactionSet,
+    basename="client_wallet_transaction_api"
+)
 
 urlpatterns = [
     path('', include((router.urls, "api"))),

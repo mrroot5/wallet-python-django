@@ -19,7 +19,7 @@ insert_final_newline = true
 
 # MORE EXAMPLES
 # HTML config
-[*.{html,json,yml}]
+[*.{html,json,yml,md}]
 indent_size = 2
 # Python config
 [*.py]

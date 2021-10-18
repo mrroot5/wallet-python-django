@@ -1,6 +1,7 @@
 from typing import Optional
 
 from django.contrib.auth.models import User
+from django.http import Http404
 from rest_framework import serializers
 from rest_framework.fields import empty
 
@@ -49,6 +50,10 @@ class ClientAccountSerializer(serializers.ModelSerializer):
 
 class ClientWalletSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
+        """
+        This method only allows to create a wallet if user is_staff or
+        if it is his own account.
+        """
         try:
             user: Optional[int] = self.context.get("request").user.pk
         except (TypeError, AttributeError):
