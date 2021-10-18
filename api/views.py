@@ -70,6 +70,9 @@ class ClientWalletViewSet(viewsets.ModelViewSet):
         return ClientWallet.objects.filter(client_account__id=self.request.user.pk)
 
     def update(self, request, *args, **kwargs):
+        """Only allowed for superusers"""
+        if not self.request.user.is_superuser:
+            raise Http404
         kwargs['partial'] = True
         return super().update(request, *args, **kwargs)
 

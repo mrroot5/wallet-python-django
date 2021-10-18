@@ -55,23 +55,23 @@ class ClientWalletSerializer(serializers.ModelSerializer):
         if it is his own account.
         """
         try:
-            user: Optional[int] = self.context.get("request").user.pk
+            user: Optional[User] = self.context.get("request").user
         except (TypeError, AttributeError):
             user = None
-        if user:
-            client = ClientAccount.objects.get(user_account=user)
-            validated_data["client_account"] = client
+        if user and not user.is_staff:
+            try:
+                if user.clientaccount.id != validated_data.get('client_account').id:
+                    raise Http404
+            except (TypeError, AttributeError):
+                raise Http404
         return super().create(validated_data)
 
     def update(self, instance, validated_data):
         try:
-            user: Optional[int] = self.context.get("request").user.pk
+            return super().update(instance, validated_data) \
+                if self.context.get("request").user.is_superuser else Http404
         except (TypeError, AttributeError):
-            user = None
-        if user:
-            client = ClientAccount.objects.get(user_account=user)
-            validated_data["client_account"] = client
-        return super().update(instance, validated_data)
+            raise Http404
 
     class Meta:
         model = ClientWallet
@@ -80,7 +80,26 @@ class ClientWalletSerializer(serializers.ModelSerializer):
 
 
 class ClientWalletTransactionSerializer(serializers.ModelSerializer):
+
+    def create(self, validated_data):
+        """
+        This method only allows to create a transaction if user is_staff or
+        if it is his own wallet.
+        """
+        try:
+            user: Optional[User] = self.context.get("request").user
+        except (TypeError, AttributeError):
+            user = None
+        if user and not user.is_staff:
+            try:
+                user.clientaccount.clientwallet_set.get(
+                    id=validated_data.get('client_wallet_account').id
+                )
+            except ClientWallet.DoesNotExist:
+                raise Http404
+        return super().create(validated_data)
+
     class Meta:
         model = ClientWalletTransaction
         fields = "__all__"
-        read_only_fields = ("pk", "date_created",)
+        read_only_fields = ("pk", "date_created", "transaction_type", "done")
