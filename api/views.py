@@ -32,6 +32,11 @@ class UserViewSet(mixins.CreateModelMixin,
                   mixins.RetrieveModelMixin,
                   mixins.ListModelMixin,
                   viewsets.GenericViewSet):
+    """
+    Anonymous users could create their own accounts.
+    Only staff users could see the users list.
+    Regular users could only see their own accounts
+    """
     permission_classes = (AnonCreateAndUpdateOwnerOnly, ListStaffOnly,)
     serializer_class = UserSerializer
 
@@ -46,6 +51,9 @@ class UserViewSet(mixins.CreateModelMixin,
 
 
 class ClientAccountViewSet(viewsets.ModelViewSet):
+    """
+    Regular users could only interact with their own accounts.
+    """
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ClientAccountSerializer
 
@@ -60,6 +68,9 @@ class ClientAccountViewSet(viewsets.ModelViewSet):
 
 
 class ClientWalletViewSet(viewsets.ModelViewSet):
+    """
+    Regular users could only interact with their own wallets.
+    """
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ClientWalletSerializer
 
@@ -81,6 +92,9 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
                                  mixins.RetrieveModelMixin,
                                  mixins.ListModelMixin,
                                  viewsets.GenericViewSet):
+    """
+    Regular users could only interact with their own wallets.
+    """
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = ClientWalletTransactionSerializer
 
@@ -126,6 +140,9 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
 
 
 class GetCurrentUserUsername(APIView):
+    """
+    Sample view to see your own username in JSON format.
+    """
     authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
     renderer_classes = (JSONRenderer,)
@@ -136,6 +153,9 @@ class GetCurrentUserUsername(APIView):
 
 
 class GetCurrentUserId(APIView):
+    """
+    Sample view to see your own user id in JSON format.
+    """
     authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
     renderer_classes = (JSONRenderer,)
@@ -146,6 +166,9 @@ class GetCurrentUserId(APIView):
 
 
 class GetCurrentClientId(APIView):
+    """
+    Sample view to see your own client account id in JSON format.
+    """
     authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
     permission_classes = (permissions.IsAuthenticated,)
     renderer_classes = (JSONRenderer,)
@@ -157,6 +180,10 @@ class GetCurrentClientId(APIView):
 
 
 class GetNumClientAccounts(APIView):
+    """
+    Sample view to see users with account in JSON format.
+    It uses Django Aggregation.
+    """
     authentication_classes = (authentication.SessionAuthentication, authentication.BasicAuthentication,)
     permission_classes = (IsStaff,)
     renderer_classes = (JSONRenderer,)

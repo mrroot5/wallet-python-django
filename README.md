@@ -152,3 +152,8 @@ We only use two decimals and 5 digits, precision should not be a problem with fl
 * Enable django **password validations** on user creation.
 * Finish **Dockerfile production** stage.
 * Improve `pg_ready` in container `healthcheck`.
+
+...
+
+Are you here yet? OK, nice one. I should invite you to a cup of coffee.
+Just give me your wallet username and password to get in touch hehehe (yep, a simple joke).
