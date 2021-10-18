@@ -75,10 +75,9 @@ class ClientWalletViewSet(viewsets.ModelViewSet):
     serializer_class = ClientWalletSerializer
 
     def get_queryset(self):
-        # client = ClientAccount.objects.get(id=self.request.user.pk)
         if self.request.user.is_staff:
             return ClientWallet.objects.all()
-        return ClientWallet.objects.filter(client_account__id=self.request.user.pk)
+        return ClientWallet.objects.filter(client_account__user_account_id=self.request.user.pk)
 
     def update(self, request, *args, **kwargs):
         """Only allowed for superusers"""
@@ -100,10 +99,10 @@ class ClientWalletTransactionSet(mixins.CreateModelMixin,
 
     def get_queryset(self):
         if self.request.user.is_staff:
-            ClientWalletTransaction.objects.all()
+            return ClientWalletTransaction.objects.all()
         try:
             return ClientWalletTransaction.objects.filter(
-                client_wallet_account__client_account_id=self.request.user.pk
+                client_wallet_account__client_account__user_account_id=self.request.user.pk
             )
         except (ClientAccount.DoesNotExist, ClientWalletTransaction.DoesNotExist):
             raise Http404

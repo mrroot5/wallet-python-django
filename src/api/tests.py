@@ -395,6 +395,9 @@ class ClientWalletApiTests(CommonApiTests):
             name=name_surname[0], surname=name_surname[1], user_account=self.staff_user
         )
 
+        self.regular_user_wallet = self.create_client_wallet(self.regular_user_account)
+        self.staff_user_wallet = self.create_client_wallet(self.staff_user_account)
+
         super().setUp()
 
     def test_create_regular_user_wallets_as_regular_user(self):
@@ -520,6 +523,66 @@ class ClientWalletApiTests(CommonApiTests):
         self.assertEqual(404, response.status_code)
         self.client.logout()
 
+    def test_regular_user_wallets_list(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.default_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url(f'{self.api_reverse_url}-list')
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_regular_user_wallet_retrieve(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.default_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url(f'{self.api_reverse_url}-detail', kwargs={"pk": self.regular_user_wallet.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_staff_user_wallets_list(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url(f'{self.api_reverse_url}-list')
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 1)
+
+    def test_staff_user_wallet_retrieve(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url(f'{self.api_reverse_url}-detail', kwargs={"pk": self.staff_user_wallet.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_staff_user_retrieve_wallet_regular_user(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url(f'{self.api_reverse_url}-detail', kwargs={"pk": self.regular_user_wallet.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
 
 class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
     fake = None
@@ -557,6 +620,7 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
 
         self.regular_user_wallet = self.create_client_wallet(self.regular_user_account)
         self.staff_user_wallet = self.create_client_wallet(self.staff_user_account)
+
         self.regular_user_transaction = self.create_client_transaction(
             self.fake.pydecimal(left_digits=5, right_digits=2), self.regular_user_wallet
         )
@@ -727,3 +791,66 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
         response = self.client.post(self.url, data=payload, format='json')
         self.assertEqual(404, response.status_code)
         self.client.logout()
+
+    def test_regular_user_transaction_list(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.default_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url('api:client_wallet_transaction_api-list')
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_regular_user_transaction_retrieve(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.default_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url('api:client_wallet_transaction_api-detail',
+                     kwargs={"pk": self.regular_user_transaction.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_staff_user_transaction_list(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url('api:client_wallet_transaction_api-list')
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 1)
+
+    def test_staff_user_transaction_retrieve(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url('api:client_wallet_transaction_api-detail',
+                     kwargs={"pk": self.staff_user_transaction.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
+
+    def test_staff_user_retrieve_transaction_regular_user(self):
+        self.assertTrue(
+            self.client.login(
+                username=self.staff_user_username, password=self.default_user_password
+            ),
+            msg='Login error'
+        )
+        self.set_url('api:client_wallet_transaction_api-detail',
+                     kwargs={"pk": self.regular_user_transaction.id})
+        response = self.client.get(self.url, format='json')
+        self.assertEqual(200, response.status_code)
+        self.assertTrue(len(response.json()) > 0)
