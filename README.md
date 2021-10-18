@@ -17,10 +17,6 @@ Only superusers could change wallet balance.
 * docker engine == 20.10.9.
 * docker-compose == 1.28.4.
 
-## Relational models image
-
-[Graph model image](docs/images/graph-models.png)
-
 ## How to use this project?
 
 ### Using make command (recommended)
@@ -137,6 +133,7 @@ In this situation try to execute it again.
 
 ## TODO
 
+* Remove staff accounts from regular user wallet and transactions creation.
 * Auto create a **transaction** error on atomic `IntegrityError`.
 * Use `amount` **float** instead of **decimal** because of performance.
 We only use two decimals and 5 digits, precision should not be a problem with float.

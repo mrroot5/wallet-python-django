@@ -55,7 +55,7 @@ WSGI_APPLICATION = 'django_atomic_transactions.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DJANGO_DATABASE_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get('DJANGO_DATABASE_DB', os.path.join(BASE_DIR, 'db.sqlite3')),
+        'NAME': os.environ.get('DJANGO_DATABASE_DB', os.path.join(BASE_DIR, '../../db.sqlite3')),
         'USER': os.environ.get('DJANGO_DATABASE_USER'),
         'PASSWORD': os.environ.get('DJANGO_DATABASE_PASSWORD'),
         'HOST': os.environ.get('DJANGO_DATABASE_HOST'),

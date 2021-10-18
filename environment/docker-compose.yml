@@ -24,4 +24,4 @@ services:
     depends_on:
       - db
     volumes:
-      - ../:/home/application/current
+      - ../src:/home/application/current

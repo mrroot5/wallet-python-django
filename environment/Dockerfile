@@ -12,7 +12,7 @@ RUN apk update \
     && apk add build-base postgresql-dev gcc python3-dev musl-dev openssl-dev libffi-dev
 
 # Python requirements
-COPY requirements.txt /tmp/
+COPY environment/requirements/requirements.txt /tmp/
 RUN pip install --upgrade pip && pip install -r /tmp/requirements.txt
 
 # Entrypoint
@@ -24,7 +24,7 @@ CMD ['dev']
 # Development requirements
 FROM base AS development
 
-COPY requirements-dev.txt /tmp/
+COPY environment/requirements/requirements-dev.txt /tmp/
 #RUN apk add py3-pydot graphviz && pip install -r /tmp/requirements-dev.txt
 RUN pip install -r /tmp/requirements-dev.txt
 
@@ -32,4 +32,4 @@ RUN pip install -r /tmp/requirements-dev.txt
 FROM base AS production
 
 # Bundle app source
-COPY . /home/application/current
+COPY .src/ /home/application/current
