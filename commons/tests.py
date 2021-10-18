@@ -25,13 +25,14 @@ Terminal colors:
 """
 
 
+@tag("no-test")
 class SampleTests(TestCase):
     def setUp(self):
         self.num0 = '2'
         self.num1 = 2
 
     @tag("no-test")
-    def test_check_if_exception_is_raised(self):
+    def __test_check_if_exception_is_raised(self):
         """
         This test will be ok because we capture the TypeError
         as we want
@@ -40,7 +41,7 @@ class SampleTests(TestCase):
             sum = self.num0 + self.num1
 
     @tag("no-test")
-    def test_exception_is_raised_without_chek(self):
+    def __test_exception_is_raised_without_chek(self):
         """
         This test must fail because an exception is raised.
         Skipped, this test is for documentation.
