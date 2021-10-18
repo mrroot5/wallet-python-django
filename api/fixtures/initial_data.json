@@ -219,224 +219,116 @@
   "model": "auth.permission",
   "pk": 25,
   "fields": {
-    "name": "Can add bussines account",
+    "name": "Can add client account",
     "content_type": 7,
-    "codename": "add_bussinesaccount"
+    "codename": "add_clientaccount"
   }
 },
 {
   "model": "auth.permission",
   "pk": 26,
   "fields": {
-    "name": "Can change bussines account",
+    "name": "Can change client account",
     "content_type": 7,
-    "codename": "change_bussinesaccount"
+    "codename": "change_clientaccount"
   }
 },
 {
   "model": "auth.permission",
   "pk": 27,
   "fields": {
-    "name": "Can delete bussines account",
+    "name": "Can delete client account",
     "content_type": 7,
-    "codename": "delete_bussinesaccount"
+    "codename": "delete_clientaccount"
   }
 },
 {
   "model": "auth.permission",
   "pk": 28,
   "fields": {
-    "name": "Can view bussines account",
+    "name": "Can view client account",
     "content_type": 7,
-    "codename": "view_bussinesaccount"
+    "codename": "view_clientaccount"
   }
 },
 {
   "model": "auth.permission",
   "pk": 29,
   "fields": {
-    "name": "Can add bussines wallet",
+    "name": "Can add client wallet",
     "content_type": 8,
-    "codename": "add_bussineswallet"
+    "codename": "add_clientwallet"
   }
 },
 {
   "model": "auth.permission",
   "pk": 30,
   "fields": {
-    "name": "Can change bussines wallet",
+    "name": "Can change client wallet",
     "content_type": 8,
-    "codename": "change_bussineswallet"
+    "codename": "change_clientwallet"
   }
 },
 {
   "model": "auth.permission",
   "pk": 31,
   "fields": {
-    "name": "Can delete bussines wallet",
+    "name": "Can delete client wallet",
     "content_type": 8,
-    "codename": "delete_bussineswallet"
+    "codename": "delete_clientwallet"
   }
 },
 {
   "model": "auth.permission",
   "pk": 32,
   "fields": {
-    "name": "Can view bussines wallet",
+    "name": "Can view client wallet",
     "content_type": 8,
-    "codename": "view_bussineswallet"
+    "codename": "view_clientwallet"
   }
 },
 {
   "model": "auth.permission",
   "pk": 33,
   "fields": {
-    "name": "Can add client account",
+    "name": "Can add client wallet transaction",
     "content_type": 9,
-    "codename": "add_clientaccount"
+    "codename": "add_clientwallettransaction"
   }
 },
 {
   "model": "auth.permission",
   "pk": 34,
   "fields": {
-    "name": "Can change client account",
+    "name": "Can change client wallet transaction",
     "content_type": 9,
-    "codename": "change_clientaccount"
+    "codename": "change_clientwallettransaction"
   }
 },
 {
   "model": "auth.permission",
   "pk": 35,
   "fields": {
-    "name": "Can delete client account",
+    "name": "Can delete client wallet transaction",
     "content_type": 9,
-    "codename": "delete_clientaccount"
+    "codename": "delete_clientwallettransaction"
   }
 },
 {
   "model": "auth.permission",
   "pk": 36,
   "fields": {
-    "name": "Can view client account",
-    "content_type": 9,
-    "codename": "view_clientaccount"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 37,
-  "fields": {
-    "name": "Can add client wallet",
-    "content_type": 10,
-    "codename": "add_clientwallet"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 38,
-  "fields": {
-    "name": "Can change client wallet",
-    "content_type": 10,
-    "codename": "change_clientwallet"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 39,
-  "fields": {
-    "name": "Can delete client wallet",
-    "content_type": 10,
-    "codename": "delete_clientwallet"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 40,
-  "fields": {
-    "name": "Can view client wallet",
-    "content_type": 10,
-    "codename": "view_clientwallet"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 41,
-  "fields": {
-    "name": "Can add client wallet transaction",
-    "content_type": 11,
-    "codename": "add_clientwallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 42,
-  "fields": {
-    "name": "Can change client wallet transaction",
-    "content_type": 11,
-    "codename": "change_clientwallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 43,
-  "fields": {
-    "name": "Can delete client wallet transaction",
-    "content_type": 11,
-    "codename": "delete_clientwallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 44,
-  "fields": {
     "name": "Can view client wallet transaction",
-    "content_type": 11,
+    "content_type": 9,
     "codename": "view_clientwallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 45,
-  "fields": {
-    "name": "Can add bussines wallet transaction",
-    "content_type": 12,
-    "codename": "add_bussineswallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 46,
-  "fields": {
-    "name": "Can change bussines wallet transaction",
-    "content_type": 12,
-    "codename": "change_bussineswallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 47,
-  "fields": {
-    "name": "Can delete bussines wallet transaction",
-    "content_type": 12,
-    "codename": "delete_bussineswallettransaction"
-  }
-},
-{
-  "model": "auth.permission",
-  "pk": 48,
-  "fields": {
-    "name": "Can view bussines wallet transaction",
-    "content_type": 12,
-    "codename": "view_bussineswallettransaction"
   }
 },
 {
   "model": "auth.user",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$260000$FfGRlpNq2rilL7yt7fA3D9$BAOyBSQ1QYZkOzjg35cpvY+Apn9C3Y+s385yRRSR9Tc=",
-    "last_login": "2021-10-15T19:23:37.989Z",
+    "password": "pbkdf2_sha256$260000$MhA0nmUYIwSRSiVsDro6nX$7AExN82Z98CAvWau5Sv2vrVEXResMT/8PMQU0PSLMic=",
+    "last_login": "2021-10-18T21:47:09.318Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -444,7 +336,7 @@
     "email": "",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-10-15T19:23:33.371Z",
+    "date_joined": "2021-10-18T15:49:49.322Z",
     "groups": [],
     "user_permissions": []
   }
@@ -453,16 +345,34 @@
   "model": "auth.user",
   "pk": 2,
   "fields": {
-    "password": "pbkdf2_sha256$260000$OsVRPzOABsLVRzf5rYNrMm$zVA+BwTXHkJCLilg/KVJ7lzzUWzN+NMZFQ9FX4P+pg8=",
+    "password": "pbkdf2_sha256$260000$Mt2pobSit8icFW7BZGXbBn$yMcEirM06oa8xK1S4COaAsaCA2GF1at2X3Yh/KGs+vw=",
     "last_login": null,
     "is_superuser": false,
-    "username": "mrroot5",
-    "first_name": "mrroot5",
-    "last_name": "mrroot5",
+    "username": "regular",
+    "first_name": "",
+    "last_name": "",
     "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2021-10-15T19:24:03.018Z",
+    "date_joined": "2021-10-18T15:58:41.981Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$kfo8csH75dDsQ5usCNILUi$Cn0D6ZnIDDS4i2C3QEw4hmcIAosUXVd72MjWZUPm6YQ=",
+    "last_login": "2021-10-18T16:06:58.723Z",
+    "is_superuser": false,
+    "username": "staff",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-10-18T15:58:52.867Z",
     "groups": [],
     "user_permissions": []
   }
@@ -520,7 +430,7 @@
   "pk": 7,
   "fields": {
     "app_label": "api",
-    "model": "bussinesaccount"
+    "model": "clientaccount"
   }
 },
 {
@@ -528,7 +438,7 @@
   "pk": 8,
   "fields": {
     "app_label": "api",
-    "model": "bussineswallet"
+    "model": "clientwallet"
   }
 },
 {
@@ -536,133 +446,145 @@
   "pk": 9,
   "fields": {
     "app_label": "api",
-    "model": "clientaccount"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 10,
-  "fields": {
-    "app_label": "api",
-    "model": "clientwallet"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "pk": 11,
-  "fields": {
-    "app_label": "api",
     "model": "clientwallettransaction"
   }
 },
 {
-  "model": "contenttypes.contenttype",
-  "pk": 12,
-  "fields": {
-    "app_label": "api",
-    "model": "bussineswallettransaction"
-  }
-},
-{
   "model": "sessions.session",
-  "pk": "0up2pai4tzfgcq7ijfa3da82iljwqu8j",
+  "pk": "u2eaxsp0esrqqg9z9eglvp4epijhno9l",
   "fields": {
-    "session_data": ".eJxVjM0OwiAQhN-FsyH81C549O4zkIVdpGogKe3J-O62SQ96mmS-b-YtAq5LCWvnOUwkLkKL028XMT257oAeWO9NplaXeYpyV-RBu7w14tf1cP8OCvayrdlpC8Ypj4aUiho8RMcKcxzQWsiUktkSvT0PEYA9aNJsFWei0eAoPl_SnDfN:1mbSnp:EHfSN_OmNzAuO2F1EiMO4x-aumFtfDuYt7s_p3xJmtM",
-    "expire_date": "2021-10-29T19:23:37.991Z"
-  }
-},
-{
-  "model": "api.bussinesaccount",
-  "pk": "105deace-d305-46c3-91d8-df12992ebc1f",
-  "fields": {
-    "city": "Aranjuez Business",
-    "postal_code": "28000",
-    "state": "Madrid Business",
-    "public_username": "nickname Business",
-    "date_created": "2021-10-15T19:24:51.568Z",
-    "last_update": "2021-10-15T19:24:51.568Z",
-    "user_account": 1,
-    "company_name": "My Bussines Inc."
+    "session_data": ".eJxVjEEOgjAQRe_StWnK2A7FpXvO0Mx0poIaSCisjHdXEha6_e-9_zKJtnVIW9UljWIupjGn340pP3Tagdxpus02z9O6jGx3xR602n4WfV4P9-9goDp86wI5F2BWLxywJXBIuSPvCmMrQSEINGd0mAV8Fx2CAiuTwxiVQzDvDwZJOFE:1mcaTN:SUj6BJDKOj-5d5iUvMQgm4RsO6FKXapEPwh-cDtTNN4",
+    "expire_date": "2021-11-01T21:47:09.320Z"
   }
 },
 {
   "model": "api.clientaccount",
-  "pk": "5a11b13c-208d-42b7-82f5-f76705d73bc1",
+  "pk": "dcd56a63-4646-437b-b361-914dfcb859b7",
   "fields": {
     "city": "Aranjuez",
     "postal_code": "28000",
     "state": "Madrid",
-    "public_username": "nickname",
-    "date_created": "2021-10-15T19:24:27.587Z",
-    "last_update": "2021-10-15T19:24:27.587Z",
-    "user_account": 1,
-    "name": "John",
-    "surname": "Doe"
+    "public_username": "staff",
+    "date_created": "2021-10-18T21:48:05.010Z",
+    "last_update": "2021-10-18T21:48:05.010Z",
+    "user_account": 3,
+    "name": "Staff",
+    "surname": "Staff"
   }
 },
 {
-  "model": "api.bussineswallet",
-  "pk": "fde6ceb5-3b94-4b24-9667-396dcd5187bb",
+  "model": "api.clientaccount",
+  "pk": "f66379cb-4e07-4fe5-b55d-ff863de4f08a",
   "fields": {
-    "balance": 0.0,
-    "date_created": "2021-10-15T19:25:44.050Z",
-    "last_update": "2021-10-15T19:25:44.050Z",
-    "bussines_account": "105deace-d305-46c3-91d8-df12992ebc1f"
+    "city": "Aranjuez",
+    "postal_code": "28000",
+    "state": "Madrid",
+    "public_username": "regular",
+    "date_created": "2021-10-18T21:47:50.891Z",
+    "last_update": "2021-10-18T21:47:50.891Z",
+    "user_account": 2,
+    "name": "Regular",
+    "surname": "Regular"
   }
 },
 {
   "model": "api.clientwallet",
-  "pk": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
+  "pk": "a18f83ba-9157-40cc-839b-e75b1306ea5f",
   "fields": {
-    "balance": 133.23000000000002,
-    "date_created": "2021-10-15T19:25:34.482Z",
-    "last_update": "2021-10-15T19:27:05.506Z",
-    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
+    "balance": "-452.75",
+    "date_created": "2021-10-18T21:48:26.151Z",
+    "last_update": "2021-10-18T21:59:31.905Z",
+    "client_account": "dcd56a63-4646-437b-b361-914dfcb859b7"
+  }
+},
+{
+  "model": "api.clientwallet",
+  "pk": "bb2380b6-60d7-4781-bf06-218622aa4887",
+  "fields": {
+    "balance": "45000.00",
+    "date_created": "2021-10-18T21:48:23.749Z",
+    "last_update": "2021-10-18T21:57:11.388Z",
+    "client_account": "f66379cb-4e07-4fe5-b55d-ff863de4f08a"
+  }
+},
+{
+  "model": "api.clientwallet",
+  "pk": "e70f53b8-4050-4a35-a3b3-d80ec155189f",
+  "fields": {
+    "balance": "1201.41",
+    "date_created": "2021-10-18T21:48:20.768Z",
+    "last_update": "2021-10-18T21:55:55.229Z",
+    "client_account": "f66379cb-4e07-4fe5-b55d-ff863de4f08a"
   }
 },
 {
   "model": "api.clientwallettransaction",
-  "pk": "23862f48-e0bc-4a50-a6e3-89d46ef71644",
-  "fields": {
-    "description": "Transaction description",
-    "ammount": 10.0,
-    "done": false,
-    "transaction_type": 1,
-    "error_msg": "asfadfsdfsdf",
-    "extra_info": "Extra info about this transaction",
-    "date_created": "2021-10-15T19:26:33.425Z",
-    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
-    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
-  }
-},
-{
-  "model": "api.clientwallettransaction",
-  "pk": "9a8baede-bdd5-4bdd-ac6d-3eb2d05f02ca",
-  "fields": {
-    "description": "Transaction description 2",
-    "ammount": 123.23,
-    "done": false,
-    "transaction_type": 0,
-    "error_msg": "asfadfsdfsdf",
-    "extra_info": "",
-    "date_created": "2021-10-15T19:27:05.509Z",
-    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
-    "client_account": "5a11b13c-208d-42b7-82f5-f76705d73bc1"
-  }
-},
-{
-  "model": "api.bussineswallettransaction",
-  "pk": "59b49fdd-fe18-481f-aaca-e6a0e3d2af96",
+  "pk": "00b0f5af-31c6-4f09-ba23-68a70d951fc1",
   "fields": {
     "description": "",
-    "ammount": 2356.0,
-    "done": false,
-    "transaction_type": 0,
-    "error_msg": "Transaction error: insufficient funds",
+    "amount": "-100.00",
+    "done": true,
+    "transaction_type": 3,
+    "error_msg": "",
     "extra_info": "",
-    "date_created": "2021-10-15T19:27:54.731Z",
-    "client_wallet_account": "b1793dde-dd89-4815-8b07-64e0b32ff37a",
-    "bussines_wallet_account": "fde6ceb5-3b94-4b24-9667-396dcd5187bb"
+    "date_created": "2021-10-18T21:56:32.143Z",
+    "client_wallet_account": "bb2380b6-60d7-4781-bf06-218622aa4887"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "2183961e-ec27-44ed-9166-9330896a4d53",
+  "fields": {
+    "description": "",
+    "amount": "45352.00",
+    "done": true,
+    "transaction_type": 2,
+    "error_msg": "",
+    "extra_info": "",
+    "date_created": "2021-10-18T21:56:19.333Z",
+    "client_wallet_account": "bb2380b6-60d7-4781-bf06-218622aa4887"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "6dc8b0bc-87b1-4bb9-9c04-a6fc5efb2870",
+  "fields": {
+    "description": "",
+    "amount": "1201.41",
+    "done": true,
+    "transaction_type": 2,
+    "error_msg": "",
+    "extra_info": "",
+    "date_created": "2021-10-18T21:55:55.232Z",
+    "client_wallet_account": "e70f53b8-4050-4a35-a3b3-d80ec155189f"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "d68238c8-b378-451a-9227-4f21d6c89548",
+  "fields": {
+    "description": "",
+    "amount": "-252.00",
+    "done": true,
+    "transaction_type": 3,
+    "error_msg": "",
+    "extra_info": "",
+    "date_created": "2021-10-18T21:57:11.392Z",
+    "client_wallet_account": "bb2380b6-60d7-4781-bf06-218622aa4887"
+  }
+},
+{
+  "model": "api.clientwallettransaction",
+  "pk": "d96f07a6-0419-4947-8d9f-1c75c23ddf29",
+  "fields": {
+    "description": "",
+    "amount": "-452.75",
+    "done": true,
+    "transaction_type": 3,
+    "error_msg": "",
+    "extra_info": "",
+    "date_created": "2021-10-18T21:59:31.908Z",
+    "client_wallet_account": "a18f83ba-9157-40cc-839b-e75b1306ea5f"
   }
 }
 ]

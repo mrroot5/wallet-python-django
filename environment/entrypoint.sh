@@ -12,7 +12,6 @@ fi
 
 if [ "$1" = 'migrate' ]; then
     echo 'Applying migrations'
-    python manage.py makemigrations commons api
     exec python manage.py migrate
 fi
 
@@ -23,10 +22,6 @@ fi
 if [ "$1" = 'graph_models' ]; then
     exec echo 'Under development...'
 #    exec python manage.py graph_models --pydot commons api -g -o graph-models.png
-fi
-
-if [ "$1" = 'test' ]; then
-    exec python manage.py test --failfast
 fi
 
 exec "$@"

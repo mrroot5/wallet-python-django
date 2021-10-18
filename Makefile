@@ -24,8 +24,8 @@ dev:
 uvicorn:
 	${DOCKER_COMPOSE_RUN_WEB} --service-ports web uvicorn
 
-test: build
-	${DOCKER_COMPOSE_RUN_WEB} web test
+tests: build
+	${DOCKER_COMPOSE_RUN_WEB} web python manage.py test --failfast api
 
 shell:
 	${DOCKER_COMPOSE_RUN_WEB} web ash
