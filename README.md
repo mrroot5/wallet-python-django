@@ -1,6 +1,11 @@
 # Django atomic transactions
 This project simulate a virtual wallet to use Django atomic transactions.
 
+Staff users could do almost any type of action while regular users only could
+do things with their own wallets.
+
+Only superusers could change wallet balance.
+
 ## Requirements
 
 * docker engine >= 19.03.
@@ -16,9 +21,7 @@ This project simulate a virtual wallet to use Django atomic transactions.
 
 [Graph model image](docs/images/graph-models.png)
 
-## Build project
-
-## How to run project this project?
+## How to use this project?
 
 ### Using make command (recommended)
 
@@ -64,6 +67,12 @@ Apply `initial_data.json` fixture. This action will erase all previous data:
 make loaddata
 ```
 
+#### Run tests
+
+```shell
+make tests
+```
+
 ### Using docker-compose
 
 #### Step 1: Build
@@ -106,6 +115,40 @@ Apply `initial_data.json` fixture. This action will erase all previous data:
 docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web loaddata
 ```
 
+#### Step 5: Run tests
+
+```shell
+docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web python manage.py test --failfast api
+```
+
+## Know issues
+
+### Database connection error: web service could not connect to db service
+
+Sometimes when try to migrate it gets an error message like that. The IP is an example:
+
+```shell
+Is the server running on host "db" (<192.168.1.25>) and accepting
+	TCP/IP connections on port 5432?
+```
+
+When `web` is up and running and `db` is not ready yet, we could have this type of error.
+In this situation try to execute it again.
+
 ## TODO
 
-* Finish Dockerfile production stage.
+* Auto create a **transaction** error on atomic `IntegrityError`.
+* Use `amount` **float** instead of **decimal** because of performance.
+We only use two decimals and 5 digits, precision should not be a problem with float.
+[Example article](https://blog.teclado.com/decimal-vs-float-in-python/).
+* Add `flake8` to testing stage.
+* Create a **view** using django **templates** and **css grid** to show `GetNumClientAccounts`.
+* Create a **business** flow:
+  * Create **business** account.
+  * Create **business** wallet.
+  * Create **business** transactions.
+  * Allow **business** to manage their our client accounts.
+* Enable django **admin login** with created users.
+* Enable django **password validations** on user creation.
+* Finish **Dockerfile production** stage.
+* Improve `pg_ready` in container `healthcheck`.
