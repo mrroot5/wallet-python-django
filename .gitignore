@@ -24,7 +24,6 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-migrations
 staticfiles
 
 # PyInstaller
@@ -65,7 +64,6 @@ target/
 .python-version
 
 # Environments
-.env
 .venv
 env/
 venv/
