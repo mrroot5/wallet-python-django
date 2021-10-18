@@ -24,7 +24,7 @@ dev:
 uvicorn:
 	${DOCKER_COMPOSE_RUN_WEB} --service-ports web uvicorn
 
-tests: build
+test: build
 	${DOCKER_COMPOSE_RUN_WEB} web python manage.py test --failfast api
 
 shell:

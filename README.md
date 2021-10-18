@@ -17,10 +17,6 @@ Only superusers could change wallet balance.
 * docker engine == 20.10.9.
 * docker-compose == 1.28.4.
 
-## Relational models image
-
-[Graph model image](docs/images/graph-models.png)
-
 ## How to use this project?
 
 ### Using make command (recommended)
