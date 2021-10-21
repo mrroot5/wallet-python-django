@@ -133,11 +133,12 @@ In this situation try to execute it again.
 
 ## TODO
 
-* Remove staff accounts from regular user wallet and transactions creation.
+* Use possitive integer instead of float / decimal fields to save `amount`.
+Use type to control possitve or negative transactions. Do not forget validations!
+This will improve performance.
+* Move DRF views logic like transactions from views to model. With this change we avoid our DRF dependance and we change it to another technology in the future.
+* Remove staff accounts (html select) from regular user wallet and transactions creation UI.
 * Auto create a **transaction** error on atomic `IntegrityError`.
-* Use `amount` **float** instead of **decimal** because of performance.
-We only use two decimals and 5 digits, precision should not be a problem with float.
-[Example article](https://blog.teclado.com/decimal-vs-float-in-python/).
 * Add `flake8` to testing stage.
 * Create a **view** using django **templates** and **css grid** to show `GetNumClientAccounts`.
 * Create a **business** flow:
