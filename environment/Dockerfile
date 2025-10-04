@@ -1,3 +1,5 @@
+# ---------- Base ----------
+
 FROM python:3.9.7-alpine3.14 AS base
 
 ENV PYTHONUNBUFFERED 1
@@ -21,14 +23,14 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ['dev']
 
 
-# Development requirements
+# ---------- Development ----------
 FROM base AS development
 
 COPY environment/requirements/requirements-dev.txt /tmp/
 #RUN apk add py3-pydot graphviz && pip install -r /tmp/requirements-dev.txt
 RUN pip install -r /tmp/requirements-dev.txt
 
-# Production requirements
+# ---------- Production ----------
 FROM base AS production
 
 # Bundle app source
