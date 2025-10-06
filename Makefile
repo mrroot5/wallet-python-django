@@ -28,7 +28,7 @@ test: build
 	${DOCKER_COMPOSE_RUN_WEB} web python manage.py test --failfast api
 
 deprecations: build migrate
-	${DOCKER_COMPOSE_RUN_WEB} web python -Wa manage.py test --failfast api
+	${DOCKER_COMPOSE_RUN_WEB} web python -Wa manage.py test
 
 shell:
 	${DOCKER_COMPOSE_RUN_WEB} web ash

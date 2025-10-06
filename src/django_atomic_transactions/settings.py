@@ -58,8 +58,15 @@ DATABASES = {
         'USER': os.environ.get('DJANGO_DATABASE_USER'),
         'PASSWORD': os.environ.get('DJANGO_DATABASE_PASSWORD'),
         'HOST': os.environ.get('DJANGO_DATABASE_HOST'),
-        'PORT': os.environ.get('DJANGO_DATABASE_PORT', 5432)
-    }
+        'PORT': os.environ.get('DJANGO_DATABASE_PORT', 5432),
+        'OPTIONS': {
+            'pool': {
+                'min_size': 1,
+                'max_size': 4,
+                'timeout': 10,
+            }
+        }
+    },
 }
 
 AUTH_PASSWORD_VALIDATORS = [

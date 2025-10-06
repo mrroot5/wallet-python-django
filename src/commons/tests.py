@@ -5,7 +5,6 @@ This tests was made to test Rest API behavior
 
 Author: Adrian G
 Created: 2019/03/16
-Contact:  mroot5@outlook.es
 Notes:
 test --keepdb
 https://docs.djangoproject.com/en/dev/ref/django-admin/#cmdoption-test-keepdb
@@ -18,10 +17,6 @@ If an exception is reaised the test is ok on the other hand the test fail
 
 https://docs.djangoproject.com/en/dev/topics/testing/tools/#exceptions
 https://docs.python.org/3/library/unittest.html#unittest.TestCase.assertRaises
-
-Terminal colors:
-* Yellow: \e[33mText\e[0m
-* Red: \e[32mText\e[0m
 """
 
 
