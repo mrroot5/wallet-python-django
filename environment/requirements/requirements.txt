@@ -1,9 +1,9 @@
 asgiref==3.10.0
 backcall==0.2.0
 decorator==5.2.1
-Django==3.2.25
-django-extensions==3.2.3
-djangorestframework==3.15.1
+Django==4.2.25
+django-extensions==4.1
+djangorestframework==3.16.1
 Faker==37.8.0
 flake8==4.0.1
 ipython==7.28.0
@@ -19,7 +19,6 @@ ptyprocess==0.7.0
 pycodestyle==2.8.0
 pyflakes==2.4.0
 Pygments==2.19.2
-pytz==2025.2
 sqlparse==0.5.3
 traitlets==5.14.3
 typing_extensions==4.15.0
