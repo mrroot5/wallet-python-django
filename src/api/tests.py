@@ -1,14 +1,13 @@
-from typing import Optional, List
-
 import re
+from typing import List, Optional
+
 from django.contrib.auth.models import User
 from django.test import TransactionTestCase
+from faker import Faker
 from rest_framework.reverse import reverse
 from rest_framework.test import APITestCase
 
 from api.models import ClientAccount, ClientWallet, ClientWalletTransaction
-
-from faker import Faker
 
 
 # api.tests.ClientAccountApiTests.test_create_regular_user_and_sign_in
@@ -30,11 +29,6 @@ class CommonApiTests(APITestCase):
         user.is_superuser = False
         user.save()
         return user
-
-        # group, is_created = Group.objects.get_or_create(name='testgroup')
-        # user.groups.add(group)
-        # for perm in Permission.objects.all():
-        #     group.permissions.add(perm)
 
     def create_client_account(
         self, name: Optional[str] = default_user_username,
@@ -62,18 +56,6 @@ class CommonApiTests(APITestCase):
             amount=amount,
             client_wallet_account=client_wallet, **kwargs
         )
-    # def create_user_auth(cls):
-    #     user, is_created = User.objects.get_or_create(username='testuser')
-    #     user.set_password('aaa')
-    #     user.is_staff = True
-    #     user.is_active = True
-    #     user.is_superuser = True
-    #     user.save()
-    #
-    #     group, is_created = Group.objects.get_or_create(name='testgroup')
-    #     user.groups.add(group)
-    #     for perm in Permission.objects.all():
-    #         group.permissions.add(perm)
 
     def set_url(self, name: str, kwargs: object = None) -> None:
         self.url = reverse(name, kwargs=kwargs)
@@ -128,7 +110,11 @@ class UserApiTests(CommonApiTests):
         self.set_url('api:user_api-list')
         response = self.client.post(self.url, data=payload, format='json')
         self.assertEqual(201, response.status_code)
-        self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         self.assertTrue(
             self.client.login(username=payload.get('username'), password=payload.get('password')),
             msg='Login error'
@@ -151,7 +137,11 @@ class UserApiTests(CommonApiTests):
         self.set_url('api:user_api-list')
         response = self.client.post(self.url, data=payload, format='json')
         self.assertEqual(201, response.status_code)
-        self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         self.assertTrue(
             self.client.login(username=payload.get('username'), password=payload.get('password')),
             msg='Login error'
@@ -183,7 +173,10 @@ class UserApiTests(CommonApiTests):
         self.set_url('api:user_api-detail', kwargs=api_url_params)
         response = self.client.patch(self.url, data=payload, format='json')
         self.assertEqual(200, response.status_code)
-        self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
 
     def test_update_staff_user(self):
         username_password = self.fake.unique.name().lower().replace(' ', '_')
@@ -212,7 +205,10 @@ class UserApiTests(CommonApiTests):
 
         response = self.client.patch(self.url, data=payload, format='json')
         self.assertEqual(200, response.status_code)
-        self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
 
 
 class ClientAccountApiTests(CommonApiTests):
@@ -261,7 +257,11 @@ class ClientAccountApiTests(CommonApiTests):
         self.set_url('api:client_api-list')
         response = self.client.post(self.url, data=payload, format='json')
         self.assertEqual(201, response.status_code)
-        self.assertDictContainsSubset(payload, response.json())
+
+        payload_unique_items = set(payload.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(payload_unique_items.issubset(response_json_unique_items))
+
         self.assertTrue(ClientAccount.objects.get(user_account=user.id))
         self.client.logout()
 
@@ -283,7 +283,11 @@ class ClientAccountApiTests(CommonApiTests):
         self.set_url('api:client_api-list')
         response = self.client.post(self.url, data=payload, format='json')
         self.assertEqual(201, response.status_code)
-        self.assertDictContainsSubset(payload, response.json())
+
+        payload_unique_items = set(payload.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(payload_unique_items.issubset(response_json_unique_items))
+
         self.client.logout()
 
     def test_partial_update(self):
@@ -298,7 +302,11 @@ class ClientAccountApiTests(CommonApiTests):
         self.set_url('api:client_api-detail', kwargs=api_url_params)
         response = self.client.patch(self.url, data=payload, format='json')
         self.assertEqual(200, response.status_code)
-        self.assertDictContainsSubset(payload, response.json())
+
+        payload_unique_items = set(payload.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(payload_unique_items.issubset(response_json_unique_items))
+
         self.client.logout()
 
     def test_staff_updates_regular_user_account(self):
@@ -313,7 +321,11 @@ class ClientAccountApiTests(CommonApiTests):
         self.set_url('api:client_api-detail', kwargs=api_url_params)
         response = self.client.patch(self.url, data=payload, format='json')
         self.assertEqual(200, response.status_code)
-        self.assertDictContainsSubset(payload, response.json())
+
+        payload_unique_items = set(payload.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(payload_unique_items.issubset(response_json_unique_items))
+
         self.client.logout()
 
     def test_regular_user_can_not_update_staff_account(self):
@@ -418,7 +430,11 @@ class ClientWalletApiTests(CommonApiTests):
             self.set_url(f'{self.api_reverse_url}-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} wallets done')
         self.client.logout()
 
@@ -464,7 +480,11 @@ class ClientWalletApiTests(CommonApiTests):
             self.set_url(f'{self.api_reverse_url}-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} transactions done')
         self.client.logout()
 
@@ -494,7 +514,11 @@ class ClientWalletApiTests(CommonApiTests):
             self.set_url(f'{self.api_reverse_url}-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} transactions done')
         self.client.logout()
 
@@ -660,7 +684,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
             self.set_url('api:client_wallet_transaction_api-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} transactions done')
         self.client.logout()
 
@@ -720,7 +748,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
             self.set_url('api:client_wallet_transaction_api-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} transactions done')
         self.client.logout()
 
@@ -760,7 +792,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
             self.set_url('api:client_wallet_transaction_api-list')
             response = self.client.post(self.url, data=payload, format='json')
             self.assertEqual(201, response.status_code)
-            self.assertDictContainsSubset(response_data, response.json())
+
+        response_data_unique_items = set(response_data.items())
+        response_json_unique_items = set(response.json().items())
+        self.assertTrue(response_data_unique_items.issubset(response_json_unique_items))
+
         print(f'{num_iterations} transactions done')
         self.client.logout()
 

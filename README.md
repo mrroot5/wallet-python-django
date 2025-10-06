@@ -8,14 +8,14 @@ Only superusers could change wallet balance.
 
 ## Requirements
 
+### Old docker implementations
+
 * docker engine >= 19.03.
 * docker-compose >= 1.27.
 
-## Tested on
+### New docker with docker-compose integrated
 
-* Ubuntu 18.04 (Bionic).
-* docker engine == 20.10.9.
-* docker-compose == 1.28.4.
+* docker version >= 28.3.3
 
 ## How to use this project?
 
@@ -69,12 +69,12 @@ make loaddata
 make tests
 ```
 
-### Using docker-compose
+### Using docker compose
 
 #### Step 1: Build
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml build
+docker compose -p django_atomic_transactions -f environment/docker compose.yml build
 ```
 
 #### Step 2: Migrate
@@ -82,7 +82,7 @@ docker-compose -p django_atomic_transactions -f environment/docker-compose.yml b
 Apply django migrations:
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web migrate
+docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web migrate
 ```
 
 #### Step 3: Run service
@@ -92,7 +92,7 @@ docker-compose -p django_atomic_transactions -f environment/docker-compose.yml r
 Run django runserver command:
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web dev
+docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web dev
 ```
 
 * **Uvicorn**
@@ -100,7 +100,7 @@ docker-compose -p django_atomic_transactions -f environment/docker-compose.yml r
 Run uvicorn server:
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web uvicorn
+docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web uvicorn
 ```
 
 #### Step 4: Load sample data
@@ -108,13 +108,13 @@ docker-compose -p django_atomic_transactions -f environment/docker-compose.yml r
 Apply `initial_data.json` fixture. This action will erase all previous data:
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web loaddata
+docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web loaddata
 ```
 
 #### Step 5: Run tests
 
 ```shell
-docker-compose -p django_atomic_transactions -f environment/docker-compose.yml run --rm --service-ports web python manage.py test --failfast api
+docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web python manage.py test --failfast api
 ```
 
 ## Know issues
@@ -154,4 +154,4 @@ This will improve performance.
 ...
 
 Are you here yet? OK, nice one. I should invite you to a cup of coffee.
-Just give me your wallet username and password to get in touch hehehe (yep, a simple joke).
+Just give me your wallet username and password to get in touch hehehe (yep, a silly joke).
