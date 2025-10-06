@@ -68,7 +68,7 @@ class WalletTransaction(models.Model):
 
     amount and client_wallet_account are the only required fields.
     """
-    class Type(models.TextChoices):
+    class Type(models.IntegerChoices):
         ERROR = 0
         TESTING = 1
         DEPOSIT = 2
@@ -79,7 +79,7 @@ class WalletTransaction(models.Model):
     amount = models.DecimalField(max_digits=7, decimal_places=2)
     done = models.BooleanField(default=True, help_text="It check if the transaction was completed")
     transaction_type = models.IntegerField(
-        choices=Type.choices, default=Type.TESTING.value, help_text="Add or substract money"
+        choices=Type, default=Type.TESTING.value, help_text="Add or substract money"
     )
     error_msg = models.CharField(max_length=250, null=True, blank=True, unique=False,
                                  help_text="Ex. Transaction error: negative balance")

@@ -670,11 +670,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
                 "client_wallet_account": self.regular_user_wallet.id
             }
             if payload.get('amount', 0) > 0:
-                transaction_type = str(ClientWalletTransaction.Type.DEPOSIT.value)
+                transaction_type = ClientWalletTransaction.Type.DEPOSIT.value
             elif payload.get('amount', 0) < 0:
-                transaction_type = str(ClientWalletTransaction.Type.WITHDRAW.value)
+                transaction_type = ClientWalletTransaction.Type.WITHDRAW.value
             else:
-                transaction_type = str(ClientWalletTransaction.Type.TESTING.value)
+                transaction_type = ClientWalletTransaction.Type.TESTING.value
             response_data = {
                 **payload,
                 "amount": str(payload.get('amount')),
@@ -734,11 +734,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
                 "client_wallet_account": self.regular_user_wallet.id
             }
             if payload.get('amount', 0) > 0:
-                transaction_type = str(ClientWalletTransaction.Type.DEPOSIT.value)
+                transaction_type = ClientWalletTransaction.Type.DEPOSIT.value
             elif payload.get('amount', 0) < 0:
-                transaction_type = str(ClientWalletTransaction.Type.WITHDRAW.value)
+                transaction_type = ClientWalletTransaction.Type.WITHDRAW.value
             else:
-                transaction_type = str(ClientWalletTransaction.Type.TESTING.value)
+                transaction_type = ClientWalletTransaction.Type.TESTING.value
             response_data = {
                 **payload,
                 "amount": str(payload.get('amount')),
@@ -778,11 +778,11 @@ class ClientWalletTransactionApiTests(CommonApiTests, TransactionTestCase):
                 "client_wallet_account": user_wallet.id
             }
             if payload.get('amount', 0) > 0:
-                transaction_type = str(ClientWalletTransaction.Type.DEPOSIT.value)
+                transaction_type = ClientWalletTransaction.Type.DEPOSIT.value
             elif payload.get('amount', 0) < 0:
-                transaction_type = str(ClientWalletTransaction.Type.WITHDRAW.value)
+                transaction_type = ClientWalletTransaction.Type.WITHDRAW.value
             else:
-                transaction_type = str(ClientWalletTransaction.Type.TESTING.value)
+                transaction_type = ClientWalletTransaction.Type.TESTING.value
             response_data = {
                 **payload,
                 "amount": str(payload.get('amount')),
