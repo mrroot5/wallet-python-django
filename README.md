@@ -154,4 +154,4 @@ This will improve performance.
 ...
 
 Are you here yet? OK, nice one. I should invite you to a cup of coffee.
-Just give me your wallet username and password to get in touch hehehe (yep, a simple joke).
+Just give me your wallet username and password to get in touch hehehe (yep, a silly joke).
