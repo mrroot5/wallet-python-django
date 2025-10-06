@@ -63,58 +63,12 @@ Apply `initial_data.json` fixture. This action will erase all previous data:
 make loaddata
 ```
 
+*Default admin password for local development is `admin`.*
+
 #### Run tests
 
 ```shell
 make tests
-```
-
-### Using docker compose
-
-#### Step 1: Build
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml build
-```
-
-#### Step 2: Migrate
-
-Apply django migrations:
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web migrate
-```
-
-#### Step 3: Run service
-
-* **Runserver**
-
-Run django runserver command:
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web dev
-```
-
-* **Uvicorn**
-
-Run uvicorn server:
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web uvicorn
-```
-
-#### Step 4: Load sample data
-
-Apply `initial_data.json` fixture. This action will erase all previous data:
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web loaddata
-```
-
-#### Step 5: Run tests
-
-```shell
-docker compose -p django_atomic_transactions -f environment/docker compose.yml run --rm --service-ports web python manage.py test --failfast api
 ```
 
 ## Know issues
