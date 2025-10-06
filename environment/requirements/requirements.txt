@@ -19,7 +19,6 @@ ptyprocess==0.7.0
 pycodestyle==2.8.0
 pyflakes==2.4.0
 Pygments==2.19.2
-pytz==2025.2
 sqlparse==0.5.3
 traitlets==5.14.3
 typing_extensions==4.15.0
