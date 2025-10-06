@@ -1,14 +1,19 @@
-version: '3.8'
+networks:
+  default:
+    name: wallet_net
+
+name: wallet
 
 services:
   db:
     image: postgres:14.0-alpine
     env_file: .env
     healthcheck:
-      test: [ "CMD", "pg_isready" ]
-      interval: 1s
-      timeout: 3s
-      retries: 30
+      test: ["CMD", "pg_isready"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 25s
     ports:
       - "5432:5432"
 
