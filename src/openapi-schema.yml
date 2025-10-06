@@ -1,0 +1,696 @@
+openapi: 3.0.2
+info:
+  title: 'Wallet Django'
+  version: ''
+  how_to: 'https://www.django-rest-framework.org/api-guide/schemas/#generating-an-openapi-schema'
+paths:
+  /api/v1/user/:
+    get:
+      operationId: listUsers
+      description: 'Anonymous users could create their own accounts.
+
+        Only staff users could see the users list.
+
+        Regular users could only see their own accounts'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createUser
+      description: 'Anonymous users could create their own accounts.
+
+        Only staff users could see the users list.
+
+        Regular users could only see their own accounts'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - api
+  /api/v1/user/{id}/:
+    get:
+      operationId: retrieveUser
+      description: 'Anonymous users could create their own accounts.
+
+        Only staff users could see the users list.
+
+        Regular users could only see their own accounts'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateUser
+      description: 'Anonymous users could create their own accounts.
+
+        Only staff users could see the users list.
+
+        Regular users could only see their own accounts'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateUser
+      description: 'Anonymous users could create their own accounts.
+
+        Only staff users could see the users list.
+
+        Regular users could only see their own accounts'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+      tags:
+      - api
+  /api/v1/client/:
+    get:
+      operationId: listClientAccounts
+      description: Regular users could only interact with their own accounts.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientAccount'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createClientAccount
+      description: Regular users could only interact with their own accounts.
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientAccount'
+          description: ''
+      tags:
+      - api
+  /api/v1/client/{id}/:
+    get:
+      operationId: retrieveClientAccount
+      description: Regular users could only interact with their own accounts.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientAccount'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateClientAccount
+      description: Regular users could only interact with their own accounts.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientAccount'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateClientAccount
+      description: Regular users could only interact with their own accounts.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientAccount'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientAccount'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyClientAccount
+      description: Regular users could only interact with their own accounts.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/client_wallet/:
+    get:
+      operationId: listClientWallets
+      description: Regular users could only interact with their own wallets.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientWallet'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createClientWallet
+      description: Regular users could only interact with their own wallets.
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWallet'
+          description: ''
+      tags:
+      - api
+  /api/v1/client_wallet/{id}/:
+    get:
+      operationId: retrieveClientWallet
+      description: Regular users could only interact with their own wallets.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWallet'
+          description: ''
+      tags:
+      - api
+    put:
+      operationId: updateClientWallet
+      description: Only allowed for superusers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWallet'
+          description: ''
+      tags:
+      - api
+    patch:
+      operationId: partialUpdateClientWallet
+      description: Regular users could only interact with their own wallets.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientWallet'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWallet'
+          description: ''
+      tags:
+      - api
+    delete:
+      operationId: destroyClientWallet
+      description: Regular users could only interact with their own wallets.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+      tags:
+      - api
+  /api/v1/client_wallet_transaction/:
+    get:
+      operationId: listClientWalletTransactions
+      description: Regular users could only interact with their own wallets.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientWalletTransaction'
+          description: ''
+      tags:
+      - api
+    post:
+      operationId: createClientWalletTransaction
+      description: '* Docs
+
+        ** Transaction atomic:'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientWalletTransaction'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientWalletTransaction'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientWalletTransaction'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWalletTransaction'
+          description: ''
+      tags:
+      - api
+  /api/v1/client_wallet_transaction/{id}/:
+    get:
+      operationId: retrieveClientWalletTransaction
+      description: Regular users could only interact with their own wallets.
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: ''
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientWalletTransaction'
+          description: ''
+      tags:
+      - api
+  /api/v1/get_username/:
+    get:
+      operationId: listGetCurrentUserUsernames
+      description: Sample view to see your own username in JSON format.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/v1/get_user_id/:
+    get:
+      operationId: listGetCurrentUserIds
+      description: Sample view to see your own user id in JSON format.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/v1/get_client_id/:
+    get:
+      operationId: listGetCurrentClientIds
+      description: Sample view to see your own client account id in JSON format.
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+  /api/v1/get_num_accounts/:
+    get:
+      operationId: listGetNumClientAccounts
+      description: 'Sample view to see users with account in JSON format.
+
+        It uses Django Aggregation.'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {}
+          description: ''
+      tags:
+      - api
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+\z
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+        is_staff:
+          type: boolean
+          description: Designates whether the user can log into this admin site.
+      required:
+      - username
+      - password
+    ClientAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        city:
+          type: string
+          nullable: true
+          description: Ex. Aranjuez
+          maxLength: 100
+        postal_code:
+          type: string
+          nullable: true
+          description: Ex. 28000
+          maxLength: 100
+        state:
+          type: string
+          nullable: true
+          description: Ex. Madrid
+          maxLength: 100
+        public_username:
+          type: string
+          nullable: true
+          description: Ex. nickname
+          maxLength: 150
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        last_update:
+          type: string
+          format: date-time
+          readOnly: true
+        name:
+          type: string
+          description: Ex. John
+          maxLength: 50
+        surname:
+          type: string
+          description: Ex. Doe
+          maxLength: 100
+      required:
+      - name
+      - surname
+    ClientWallet:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        balance:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 1000000000000000000000000000000000000000000000000000000000000000
+          minimum: -1000000000000000000000000000000000000000000000000000000000000000
+          readOnly: true
+          description: Total ammount of money in this wallet
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        last_update:
+          type: string
+          format: date-time
+          readOnly: true
+        client_account:
+          type: string
+      required:
+      - client_account
+    ClientWalletTransaction:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        description:
+          type: string
+          nullable: true
+          description: Transaction description
+          maxLength: 250
+        amount:
+          type: string
+          format: decimal
+          multipleOf: 0.01
+          maximum: 100000
+          minimum: -100000
+        done:
+          type: boolean
+          readOnly: true
+          description: It check if the transaction was completed
+        transaction_type:
+          enum:
+          - '0'
+          - '1'
+          - '2'
+          - '3'
+          type: string
+          readOnly: true
+          description: Add or substract money
+        error_msg:
+          type: string
+          nullable: true
+          description: 'Ex. Transaction error: negative balance'
+          maxLength: 250
+        extra_info:
+          type: string
+          nullable: true
+          description: Extra info about this transaction
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        client_wallet_account:
+          type: string
+      required:
+      - amount
+      - client_wallet_account

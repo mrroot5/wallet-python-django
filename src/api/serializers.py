@@ -26,7 +26,9 @@ class ClientAccountSerializer(serializers.ModelSerializer):
 
     def __init__(self, instance=None, data=empty, **kwargs):
         super().__init__(instance, data, **kwargs)
-        if self.context.get('request').user.is_staff:
+        request = self.context.get('request')
+
+        if request and request.user.is_staff:
             self.Meta.exclude = ()
         else:
             self.Meta.exclude = ('user_account',)
