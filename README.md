@@ -1,8 +1,9 @@
-# Django atomic transactions
-This project simulate a virtual wallet to use Django atomic transactions.
+# Wallet Python Django
+
+This project simulates a virtual wallet with Django atomic transactions.
 
 Staff users could do almost any type of action while regular users only could
-do things with their own wallets.
+manage their own wallets.
 
 Only superusers could change wallet balance.
 
