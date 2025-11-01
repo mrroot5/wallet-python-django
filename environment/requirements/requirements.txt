@@ -9,7 +9,7 @@ flake8==4.0.1
 ipython==7.28.0
 jedi==0.19.2
 matplotlib-inline==0.1.7
-mccabe==0.6.1
+mccabe==0.7.0
 parso==0.8.5
 pexpect==4.9.0
 pickleshare==0.7.5
