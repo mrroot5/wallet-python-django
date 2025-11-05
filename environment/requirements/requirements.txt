@@ -1,7 +1,7 @@
 asgiref==3.10.0
 backcall==0.2.0
 decorator==5.2.1
-Django==5.2.7
+Django==5.2.8
 django-extensions==4.1
 djangorestframework==3.16.1
 Faker==37.8.0
